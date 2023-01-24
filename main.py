@@ -3,6 +3,7 @@ import shutil
 import sys
 from PIL import Image, ImageDraw, ImageFont
 import imageio.v2 as imageio
+import moviepy.editor as mp
 import structures
 import new_structures_create
 import time
@@ -238,12 +239,11 @@ def get_generation(cells, generations):
 
         sys.stdout.write(f"\rCompleted Generation {i + 1} / {generations} generations")
         sys.stdout.flush()
-        print("\n")
 
 
 
-
-    print("Creating gif \n")
+    print("\n")
+    print("Creating gif and video\n")
     
     #resize all jpeg images
     maximumw, maximumh = pxmaxmin(pxwidths_list,pxheights_list)
@@ -264,6 +264,10 @@ def get_generation(cells, generations):
     #save to downloads folder
     download_folder = os.path.expanduser("~/Downloads")
     imageio.mimsave(f"{download_folder}/animation.gif", images)
+
+    clip = mp.VideoFileClip(f"{download_folder}/animation.gif")
+    clip.write_videofile(f"{download_folder}/video.mp4")
+
 
     #cleanup and delete Output folder
     # Get the current working directory
@@ -359,4 +363,4 @@ print("Okay, starting now!\n")
 get_generation(getattr(structures, structure_choice.lower()), generation_choice)
 
 print("\n")
-print(f"The gif of {structure_choice} for {generation_choice} generations has been saved to your downloads folder\n")
+print(f"The gif and video of {structure_choice} for {generation_choice} generations has been saved to your downloads folder\n")
