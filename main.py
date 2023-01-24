@@ -142,7 +142,10 @@ def link(uri, label=None):
 def get_generation(cells, generations):
 
     #create directory for output
-    os.mkdir("Output")
+    dir = "Output"
+    if os.path.exists(dir):
+        shutil.rmtree(dir)
+    os.makedirs(dir)
     os.chdir("Output")
 
     #create list of image files for gif
