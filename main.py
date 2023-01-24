@@ -4,7 +4,9 @@ import sys
 from PIL import Image, ImageDraw, ImageFont
 import imageio.v2 as imageio
 import structures
+import new_structures_create
 import time
+from termcolor import colored
 #set Arial as the font for htmlize
 font = ImageFont.truetype("arial.ttf", 15)
 
@@ -279,14 +281,33 @@ def get_generation(cells, generations):
 
 
 #main
-hyperlink = link("https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life", "Conway's Game of Life")
-print(f"Welcome to {hyperlink}!\n")
+wikihyperlink = link("https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life", "Conway's Game of Life")
+print(f"Welcome to {wikihyperlink}!\n")
 time.sleep(0.8)
+conwayhyperlink = link("https://conwaylife.com/patterns", "ConwayLife Patterns")
+print(f"Would you like to use a preset structure or choose a structure url from {conwayhyperlink}?")
+print(colored("Preset", "blue"))
+print(colored("URL", "blue"))
+
+
+while True:
+    preseturlchoice = input()
+    if preseturlchoice.lower() != "preset" and preseturlchoice.lower() != "url":
+        print("Sorry, you need to choose one of these two options\n")
+    elif preseturlchoice.lower() == "url":
+        new_structures_create.urltoinput()
+        break
+    else:
+        break
+
+
+
+
 print("These are the structures that you can choose from:")
 #Get structures from structures
 only_vars = [var for var in dir(structures) if not callable(getattr(structures, var)) and not var.startswith("__")]
 list = "\n".join(only_vars)
-print(list + "\n")
+print(colored(list + "\n", "blue"))
 time.sleep(0.8)
 
 while True:
