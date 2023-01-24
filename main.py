@@ -236,8 +236,9 @@ def get_generation(cells, generations):
         #remove the txt file
         os.remove(f"Gen{i}.txt")
 
-        sys.stdout.write(f"\rCompleted Generation {i + 1} / {generations} generations\n")
+        sys.stdout.write(f"\rCompleted Generation {i + 1} / {generations} generations")
         sys.stdout.flush()
+        print("\n")
 
 
 
