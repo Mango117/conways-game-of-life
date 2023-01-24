@@ -71,12 +71,10 @@ def urltoinput():
 
   #get text from conwaylife url
   pagedata = requests.get(url)
-  print(pagedata.text)
 
   #isolate the cells
   new_string = re.sub(r"^!.*\n", "", pagedata.text, flags=re.MULTILINE)
   new_string = new_string.replace('\r', '')
-  print(new_string)
 
   #create the array
   first_version = create_new_array(new_string)

@@ -236,7 +236,7 @@ def get_generation(cells, generations):
         #remove the txt file
         os.remove(f"Gen{i}.txt")
 
-        sys.stdout.write(f"\rCompleted Generation {i + 1} / {generations} generations")
+        sys.stdout.write(f"\rCompleted Generation {i + 1} / {generations} generations\n")
         sys.stdout.flush()
 
 
@@ -298,8 +298,25 @@ while True:
     if preseturlchoice.lower() != "preset" and preseturlchoice.lower() != "url":
         print("Sorry, you need to choose one of these two options\n")
     elif preseturlchoice.lower() == "url":
-        new_structures_create.urltoinput()
-        break
+        chosen_structure = new_structures_create.urltoinput()
+        print("Got it!")
+        time.sleep(0.8)
+
+        #get generations
+        while True:
+            generation_choice = int(input("And how many generations would you like?\n"))
+            if generation_choice > 2000 or generation_choice <= 0:
+                print("Please pick a number between 1 and 2000")
+                time.sleep(0.8)
+            else:
+                break
+        print("\n")
+
+        print("Okay, starting now!\n")
+
+        get_generation(chosen_structure, generation_choice)
+        exit()
+
     else:
         break
 
