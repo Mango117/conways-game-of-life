@@ -322,7 +322,7 @@ while True:
         get_generation(chosen_structure, generation_choice)
 
         print("\n")
-        print(f"The gif of {structure_choice} for {generation_choice} generations has been saved to your downloads folder\n")
+        print(f"The gif and video for {generation_choice} generations has been saved to your downloads folder\n")
         exit()
 
     else:
