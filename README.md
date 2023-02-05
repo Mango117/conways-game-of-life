@@ -1,5 +1,5 @@
 # Conway's Game Of Life
-A python rendition of Conway's Game of Life
+A python rendition of **Conway's Game of Life**
 
 This program saves a gif and video to your downloads folder of your chosen conway pattern for a specified number of generations
 

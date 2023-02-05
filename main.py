@@ -243,7 +243,7 @@ def get_generation(cells, generations):
 
 
     print("\n")
-    print("Creating gif and video\n")
+    print("Creating gif and video...\n")
     
     #resize all jpeg images
     maximumw, maximumh = pxmaxmin(pxwidths_list,pxheights_list)
@@ -359,8 +359,19 @@ print("\n")
 print("Okay, starting now!\n")
 
 
+st = time.time()
+stc = time.process_time()
 
 get_generation(getattr(structures, structure_choice.lower()), generation_choice)
 
+et = time.time()
+etc = time.process_time()
+
+walltime = et - st 
+cputime = etc - stc
+
+print("\n")
+print("Wall time:", time.strftime("%H:%M:%S", time.gmtime(walltime)))
+print("CPU time:", time.strftime("%H:%M:%S", time.gmtime(cputime)))
 print("\n")
 print(f"The gif and video of {structure_choice} for {generation_choice} generations has been saved to your downloads folder\n")
